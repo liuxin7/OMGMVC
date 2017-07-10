@@ -1,0 +1,52 @@
+﻿@model MVCcc.Models.UserModels
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>添加留言</h2>
+ @*  Html.BeginForm() 类似于 from 标签  action="/User/Create" method="post">  *@
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>留言信息</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)    @*代表着显示标题 *@
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Message)    @*需要填写值得标签框*@
+            @Html.ValidationMessageFor(model => model.Message)   @*验证信息 提示 如果在 models 里写了验证规则  有错  会显示验证错误信息 *@
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

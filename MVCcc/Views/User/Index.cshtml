@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVCcc.Models.UserModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>信息列表</h2>
+
+<p>
+    @Html.ActionLink("添加留言", "Create")   @*按钮  相当于  lable给了个超链接  前面的是显示 后面的参数是  动作*@
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.ActionLink("修改留言", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+            @*前面的数显示  后面是动作  在后面得是 需要传的值  要传的参数  要保证 传的参数与 动作接受时的参数名称 一致*@
+        </tr>
+    }
+
+</table>
