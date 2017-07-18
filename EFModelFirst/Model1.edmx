@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VATPRINT_CBSO_oldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="VAT02_Security_GroupSecurity">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="Enable" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="300" />
+          <Property Name="FormName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActiveXName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActiveXCatalog" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Enable" Type="int" />
+          <Property Name="UserRealName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="UserTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserSystemEdition" Type="int" Nullable="false" />
+          <Property Name="ExportSplitSymbol" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="Province" Type="varchar" MaxLength="1000" />
+          <Property Name="ProductGroup" Type="varchar" MaxLength="1000" />
+          <Property Name="InvoiceType" Type="varchar" MaxLength="10" />
+          <Property Name="Channel" Type="varchar" MaxLength="1000" />
+          <Property Name="OnlineGuid" Type="uniqueidentifier" />
+          <Property Name="FlagXX" Type="bit" />
+          <Property Name="FlagLeave" Type="bit" />
+          <Property Name="YProvince" Type="varchar" MaxLength="200" />
+          <Property Name="YProductGroup" Type="varchar" MaxLength="300" />
+          <Property Name="YChannel" Type="varchar" MaxLength="500" />
+          <Property Name="kbetr" Type="varchar" MaxLength="32" />
+          <Property Name="NextChaPwdDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_UserGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DefaultGroup" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_UserInGroup">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VAT02_UserData">
+          <Key>
+            <PropertyRef Name="UserDateID" />
+          </Key>
+          <Property Name="UserDateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ITCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AgentID" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="AgentName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="VAT02_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="VATPRINT_CBSO_oldModelStoreContainer">
+          <EntitySet Name="VAT02_Security_GroupSecurity" EntityType="Self.VAT02_Security_GroupSecurity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT02_Security_Menu" EntityType="Self.VAT02_Security_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT02_Security_User" EntityType="Self.VAT02_Security_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT02_Security_UserGroup" EntityType="Self.VAT02_Security_UserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT02_Security_UserInGroup" EntityType="Self.VAT02_Security_UserInGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT02_UserData" EntityType="Self.VAT02_UserData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT02_UserType" EntityType="Self.VAT02_UserType" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VATPRINT_CBSO_oldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="VAT02_Security_GroupSecurity">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="Enable" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveXName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveXCatalog" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Enable" Type="Int32" />
+          <Property Name="UserRealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="UserTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserSystemEdition" Type="Int32" Nullable="false" />
+          <Property Name="ExportSplitSymbol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProductGroup" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Channel" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="OnlineGuid" Type="Guid" />
+          <Property Name="FlagXX" Type="Boolean" />
+          <Property Name="FlagLeave" Type="Boolean" />
+          <Property Name="YProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="YProductGroup" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="YChannel" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="kbetr" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NextChaPwdDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_UserGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultGroup" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VAT02_Security_UserInGroup">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VAT02_UserData">
+          <Key>
+            <PropertyRef Name="UserDateID" />
+          </Key>
+          <Property Name="UserDateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ITCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgentID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AgentName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VAT02_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="VATPRINT_CBSO_oldEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VAT02_Security_GroupSecurity" EntityType="Self.VAT02_Security_GroupSecurity" />
+          <EntitySet Name="VAT02_Security_Menu" EntityType="Self.VAT02_Security_Menu" />
+          <EntitySet Name="VAT02_Security_User" EntityType="Self.VAT02_Security_User" />
+          <EntitySet Name="VAT02_Security_UserGroup" EntityType="Self.VAT02_Security_UserGroup" />
+          <EntitySet Name="VAT02_Security_UserInGroup" EntityType="Self.VAT02_Security_UserInGroup" />
+          <EntitySet Name="VAT02_UserData" EntityType="Self.VAT02_UserData" />
+          <EntitySet Name="VAT02_UserType" EntityType="Self.VAT02_UserType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VATPRINT_CBSO_oldModelStoreContainer" CdmEntityContainer="VATPRINT_CBSO_oldEntities">
+          <EntitySetMapping Name="VAT02_Security_GroupSecurity">
+            <EntityTypeMapping TypeName="VATPRINT_CBSO_oldModel.VAT02_Security_GroupSecurity">
+              <MappingFragment StoreEntitySet="VAT02_Security_GroupSecurity">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT02_Security_Menu">
+            <EntityTypeMapping TypeName="VATPRINT_CBSO_oldModel.VAT02_Security_Menu">
+              <MappingFragment StoreEntitySet="VAT02_Security_Menu">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="ActiveXName" ColumnName="ActiveXName" />
+                <ScalarProperty Name="ActiveXCatalog" ColumnName="ActiveXCatalog" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT02_Security_User">
+            <EntityTypeMapping TypeName="VATPRINT_CBSO_oldModel.VAT02_Security_User">
+              <MappingFragment StoreEntitySet="VAT02_Security_User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="UserRealName" ColumnName="UserRealName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="UserSystemEdition" ColumnName="UserSystemEdition" />
+                <ScalarProperty Name="ExportSplitSymbol" ColumnName="ExportSplitSymbol" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+                <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="OnlineGuid" ColumnName="OnlineGuid" />
+                <ScalarProperty Name="FlagXX" ColumnName="FlagXX" />
+                <ScalarProperty Name="FlagLeave" ColumnName="FlagLeave" />
+                <ScalarProperty Name="YProvince" ColumnName="YProvince" />
+                <ScalarProperty Name="YProductGroup" ColumnName="YProductGroup" />
+                <ScalarProperty Name="YChannel" ColumnName="YChannel" />
+                <ScalarProperty Name="kbetr" ColumnName="kbetr" />
+                <ScalarProperty Name="NextChaPwdDate" ColumnName="NextChaPwdDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT02_Security_UserGroup">
+            <EntityTypeMapping TypeName="VATPRINT_CBSO_oldModel.VAT02_Security_UserGroup">
+              <MappingFragment StoreEntitySet="VAT02_Security_UserGroup">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="DefaultGroup" ColumnName="DefaultGroup" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT02_Security_UserInGroup">
+            <EntityTypeMapping TypeName="VATPRINT_CBSO_oldModel.VAT02_Security_UserInGroup">
+              <MappingFragment StoreEntitySet="VAT02_Security_UserInGroup">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT02_UserData">
+            <EntityTypeMapping TypeName="VATPRINT_CBSO_oldModel.VAT02_UserData">
+              <MappingFragment StoreEntitySet="VAT02_UserData">
+                <ScalarProperty Name="UserDateID" ColumnName="UserDateID" />
+                <ScalarProperty Name="ITCode" ColumnName="ITCode" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT02_UserType">
+            <EntityTypeMapping TypeName="VATPRINT_CBSO_oldModel.VAT02_UserType">
+              <MappingFragment StoreEntitySet="VAT02_UserType">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

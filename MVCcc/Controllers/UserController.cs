@@ -22,6 +22,8 @@ namespace MVCcc.Controllers
                            orderby user.Name descending
                            select user;
             //userList = db.UserModels.OrderBy(u => u.Message).ThenBy(c=>c.Name);
+            //userList.Take(5);   //返回制定的数据  
+            //userList.Skip(10);   //  取超过10条后数据
             return View(userList.ToList());
         }
 
@@ -58,7 +60,7 @@ namespace MVCcc.Controllers
         /// <returns></returns>
         [HttpPost] //  这个只会接受post 请求   改成 get 的话 就会接受 get 请求
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserModels usermodels) 
+        public ActionResult Create(UserModels usermodels)
         {
             if (ModelState.IsValid) //  如果验证 通过的 话 就会添加
             {
@@ -80,7 +82,7 @@ namespace MVCcc.Controllers
         public ActionResult Edit(int id = 0)
         {
             UserModels usermodels = db.UserModels.Find(id);  //  用主键 去上下文中的实体中查  
-            if (usermodels == null)  
+            if (usermodels == null)
             {
                 return HttpNotFound();
             }
@@ -94,7 +96,7 @@ namespace MVCcc.Controllers
         /// </summary>
         /// <param name="usermodels"> 实体     --如果view 中的 字段 与实体字段是一致的   就会把界面的数据 传到实体 </param>
         /// <returns></returns>
-        [HttpPost]    
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserModels usermodels)
         {
